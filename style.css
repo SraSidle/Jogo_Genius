@@ -11,30 +11,64 @@
 
 body {
   width: 100vw;
-  height: auto;
+  height: 100vh;
+  max-height: auto;
   background-color: rgb(35, 35, 35);
+  text-align: center;
+  font-family: cursive;
 }
 
 .main_game {
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.introduction {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+h1 {
+  color: #74C2B6;
+  margin-bottom: .5rem;
+}
+
+
+.start_instruction {
+color: var(--white);
+animation: blinkStart ease-in-out 2s .3s infinite;
+}
+
+.game_instruction {
+color: #568F86;
+margin: 1.5rem 0;
+}
+
 .genius {
-  display: grid;
+  position: relative;
+  display: none;
   grid-template-areas:
     "green red"
     "yellow blue";
   grid-gap: 10px;
-  border: 1px solid var(--white);
-  background-color: var(--white);
+  border: 5px solid #3C4241;
+  background-color: #3C4241;
   margin-top: 5rem;
   border-radius: 100%;
   width: 500px;
   height: 500px;
+  animation: showGenius linear 1s 1;
 }
 
 .blue {
@@ -61,6 +95,26 @@ body {
 }
 
 .selected {
-    filter: blur(16px);
-    /* box-shadow: inset 0 0 20px rgb(169, 169, 169), 0 0 20px rgb(168, 168, 168); */
+  filter: blur(16px);
+  /* box-shadow: inset 0 0 20px rgb(169, 169, 169), 0 0 20px rgb(168, 168, 168); */
+}
+
+@keyframes blinkStart {
+   0% {
+    opacity: 0;
+   }
+   100% {
+    opacity: 1;
+   }
+}
+
+@keyframes showGenius {
+  0% {
+    opacity: 0;
+    left: -300px;
+  }
+  100% {
+    opacity: 1;
+    left: 0;
+  }
 }

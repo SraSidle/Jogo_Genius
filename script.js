@@ -4,6 +4,8 @@ let clickedOrder = [];
 
 let score = 0;
 
+const divIntroduction = document.querySelector(".introduction");
+const divGenius = document.querySelector(".genius");
 const blue = document.querySelector(".blue");
 const yellow = document.querySelector(".yellow");
 const red = document.querySelector(".red");
@@ -79,7 +81,6 @@ function gameOver() {
 }
 
 function playGame() {
-  alert("bem-vindo ao genius");
   score = 0;
   nextLevel();
 }
@@ -89,4 +90,17 @@ red.onclick = () => click(1);
 yellow.onclick = () => click(2);
 blue.onclick = () => click(3);
 
-playGame();
+//playGame();
+//será chamada na funcção do click do overlay start
+
+function start() {
+  setTimeout(() => {
+    divIntroduction.style.display = "none";
+  }, 500);
+  setTimeout(() => {
+    divGenius.style.display = "grid";
+  }, 1000);
+  setTimeout(() => {
+    playGame();
+  }, 2250);
+}
