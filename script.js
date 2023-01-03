@@ -6,10 +6,19 @@ let score = 0;
 
 const divIntroduction = document.querySelector(".introduction");
 const divGenius = document.querySelector(".genius");
+const divBall = document.querySelector(".ball");
+
 const blue = document.querySelector(".blue");
 const yellow = document.querySelector(".yellow");
 const red = document.querySelector(".red");
 const green = document.querySelector(".green");
+
+const miniBlue = document.querySelector(".mini_blue");
+const miniYellow = document.querySelector(".mini_yellow");
+const miniRed = document.querySelector(".mini_red");
+const miniGreen = document.querySelector(".mini_green");
+
+let miniColors = [miniBlue, miniRed, miniGreen, miniYellow];
 
 function shufferOrder() {
   let colorOrder = Math.floor(Math.random() * 4);
@@ -21,6 +30,16 @@ function shufferOrder() {
     lightColor(elementColor, Number(i) + 1);
   }
 }
+
+function lightSpin() {
+  lightColor(miniColors[0], 1);
+  lightColor(miniColors[1], 2);
+  lightColor(miniColors[2], 3);
+  lightColor(miniColors[3], 4);
+}
+
+lightSpin();
+let callLightSpin = window.setInterval(lightSpin, 5000);
 
 function lightColor(element, time) {
   time = time * 1000;
@@ -96,8 +115,10 @@ blue.onclick = () => click(3);
 function start() {
   setTimeout(() => {
     divIntroduction.style.display = "none";
+    clearInterval(callLightSpin);
   }, 500);
   setTimeout(() => {
+    divBall.style.display = "flex";
     divGenius.style.display = "grid";
   }, 1000);
   setTimeout(() => {
