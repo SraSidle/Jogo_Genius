@@ -1,0 +1,35 @@
+@media (max-width: 750px) {
+  .genius {
+    width: 350px;
+    height: 350px;
+  }
+  .ball {
+    width: 150px;
+    height: 150px;
+    top: 200px;
+  }
+}
+
+@media (max-width: 350px) {
+  .genius {
+    width: 200px;
+    height: 200px;
+  }
+  .ball {
+    width: 75px;
+    height: 75px;
+    top: 90px;
+  }
+}
+
+@media (max-height: 650px) {
+  .genius {
+    width: 400px;
+    height: 400px;
+  }
+  .ball {
+    width: 175px;
+    height: 175px;
+    top: 240px;
+  }
+}

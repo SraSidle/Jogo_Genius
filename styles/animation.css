@@ -1,0 +1,38 @@
+@keyframes showGenius {
+  0% {
+    left: -200px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes lightSpin {
+  0% {
+    filter: blur(0);
+  }
+  30% {
+    filter: blur(8px);
+  }
+  100% {
+    filter: blur(0);
+  }
+}
+
+@keyframes blinkStart {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes downMessage {
+  0% {
+    top: -150px
+  }
+  100% {
+    top: 20px;
+  }
+}
