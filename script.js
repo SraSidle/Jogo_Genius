@@ -1,12 +1,7 @@
-let order = [];
-
-let clickedOrder = [];
-
-let score = 0;
-
 const divIntroduction = document.querySelector(".introduction");
 const divGenius = document.querySelector(".genius");
 const divBall = document.querySelector(".ball");
+const divScore = document.querySelector(".score");
 
 const blue = document.querySelector(".blue");
 const yellow = document.querySelector(".yellow");
@@ -18,6 +13,14 @@ const miniYellow = document.querySelector(".mini_yellow");
 const miniRed = document.querySelector(".mini_red");
 const miniGreen = document.querySelector(".mini_green");
 
+let order = [];
+
+let clickedOrder = [];
+
+let points = 0;
+
+let score = 0;
+
 let miniColors = [miniBlue, miniRed, miniGreen, miniYellow];
 
 function shufferOrder() {
@@ -27,22 +30,23 @@ function shufferOrder() {
 
   for (let i in order) {
     let elementColor = createColorElement(order[i]);
-    lightColor(elementColor, Number(i) + 1);
+    setTimeout(() => {
+      lightColor(elementColor, Number(i) + 1);
+    }, 750);
   }
 }
 
 function lightSpin() {
-  lightColor(miniColors[0], 1);
-  lightColor(miniColors[1], 2);
-  lightColor(miniColors[2], 3);
-  lightColor(miniColors[3], 4);
+  let i = Math.floor(Math.random() * 4);
+  setTimeout(() => {
+    lightColor(miniColors[i], 1);
+  }, 500);
 }
 
-lightSpin();
-let callLightSpin = window.setInterval(lightSpin, 5000);
+let callLightSpin = window.setInterval(lightSpin, 1500);
 
 function lightColor(element, time) {
-  time = time * 1000;
+  time = time * 1200;
   setTimeout(() => {
     element.classList.add("selected");
   }, time - 800);
@@ -59,7 +63,6 @@ function checkOrder() {
     }
   }
   if (clickedOrder.length == order.length) {
-    alert(`pontuação: ${score}`);
     nextLevel();
   }
 }
@@ -67,7 +70,6 @@ function checkOrder() {
 function click(color) {
   clickedOrder[clickedOrder.length] = color;
   createColorElement(color).classList.add("selected");
-
   setTimeout(() => {
     createColorElement(color).classList.remove("selected");
     checkOrder();
@@ -88,11 +90,13 @@ function createColorElement(color) {
 
 function nextLevel() {
   score++;
+  points += clickedOrder.length;
+  divScore.innerHTML = `Nível: ${score}  Pontuação: ${points}`;
   shufferOrder();
 }
 
 function gameOver() {
-  alert(`pontuação: ${score}. Você perdeu o jogo!`);
+  alert(`Você perdeu! sua Pontuação foi: ${points}!`);
   order = [];
   clickedOrder = [];
 
@@ -101,6 +105,7 @@ function gameOver() {
 
 function playGame() {
   score = 0;
+  points = 0;
   nextLevel();
 }
 
@@ -109,9 +114,6 @@ red.onclick = () => click(1);
 yellow.onclick = () => click(2);
 blue.onclick = () => click(3);
 
-//playGame();
-//será chamada na funcção do click do overlay start
-
 function start() {
   setTimeout(() => {
     divIntroduction.style.display = "none";
@@ -119,6 +121,7 @@ function start() {
   }, 500);
   setTimeout(() => {
     divBall.style.display = "flex";
+    divScore.style.display = "flex";
     divGenius.style.display = "grid";
   }, 1000);
   setTimeout(() => {
