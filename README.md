@@ -1,7 +1,6 @@
 # Jogo Genius
 
-This is a recriation of the famous genius memory game
-Essa é uma recriação do famoso jogo de memória Genius. The objective of this game is to memorize the sequence in which the colors light up and try to press colors in the same order.
+This is a recriation of the famous genius memory game. The objective of this game is to memorize the sequence in which the colors light up and try to press colors in the same order.
 
 ⚠️Careful!!! If you mmake a mistake, you score will be reset to zero and you'll have to start over.
 
